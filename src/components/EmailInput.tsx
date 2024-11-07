@@ -62,29 +62,19 @@ const EmailInput = ({
 
 	const updateHiddenCount = useCallback(() => {
 		if (!containerRef.current || !inputRef.current) return;
-
+		const minInputWidth = 250;
 		const containerWidth = containerRef.current.clientWidth;
-		const inputWidth = inputRef.current.offsetWidth;
+		const inputWidth = minInputWidth;
 		let totalWidth = inputWidth;
 		let visibleChipCount = 0;
 
 		// Calculate how many chips can fit within the available space
 		for (const [id, chipWidth] of chipRefs.current.entries()) {
-			console.log("chipWidth", chipWidth);
+			id; //to avoid build error
 			if (totalWidth + chipWidth > containerWidth) break;
 			totalWidth += chipWidth;
 			visibleChipCount += 1;
-			console.log(
-				"totalWidth",
-				totalWidth,
-				"containerWidth",
-				containerWidth,
-				"inputWidth",
-				inputWidth
-			);
 		}
-		console.log(chipRefs, "chipRefs");
-
 		setHiddenCount(currentEmails.length - visibleChipCount);
 		currentEmails.length - visibleChipCount < 1 && setShowModal(false);
 	}, [currentEmails]);
@@ -92,7 +82,6 @@ const EmailInput = ({
 	// Measure chip width when a new email is added
 	useEffect(() => {
 		updateHiddenCount();
-		console.log("hiddenCount", hiddenCount);
 		window.addEventListener("resize", updateHiddenCount);
 		return () => window.removeEventListener("resize", updateHiddenCount);
 	}, [currentEmails, updateHiddenCount, inputValue]);
@@ -138,7 +127,7 @@ const EmailInput = ({
 				value={inputValue}
 				onChange={(e) => handleChange(e)}
 				onKeyDown={handleKeyDown}
-				className="p-1 outline-none grow-0 min-w-32 "
+				className="p-1 outline-none flex-grow min-w-32 "
 			/>
 		</div>
 	);
