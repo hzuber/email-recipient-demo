@@ -1,0 +1,17 @@
+@mixin button($bg, $color, $border-color, $outerShadow, $innerShadow) {
+	background-color: $bg;
+	border: 1px solid $border-color;
+	color: $color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 600;
+	padding: 8px 16px;
+	box-shadow: 0px 1px 2px 0px $outerShadow;
+	box-shadow: 0px -2px 4px 0px $innerShadow inset;
+	box-shadow: 0px 2px 3.4px 0px #fbfbfb4d inset;
+	white-space: nowrap;
+	border-radius: 8px;
+}
