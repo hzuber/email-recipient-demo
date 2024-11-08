@@ -35,7 +35,7 @@ npm install
 npm run dev
 ```
 
-4. **To see as a standalone page**
+4. **To see as a standalone page**:
 
 Navigate to http://localhost:5173/
 
