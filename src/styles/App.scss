@@ -53,6 +53,9 @@ body {
 	display: flex;
 	align-items: center;
 	overflow: hidden;
+	justify-content: flex-start;
+	cursor: text;
+	background-color: white;
 }
 
 .card {

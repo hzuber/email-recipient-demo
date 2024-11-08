@@ -1,14 +1,5 @@
-import { useState } from "react";
-import EmailInput from "./components/EmailInput";
-import { Button } from "./components/Button";
 import EmailComponentExample from "./example/EmailComponentExample";
 import "./styles/App.scss";
-import { EmailsModal } from "./components/EmailsModal";
-
-export type EmailObject = {
-	id: number;
-	email: string;
-};
 
 export default function App() {
 	return (

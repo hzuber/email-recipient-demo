@@ -45,24 +45,50 @@ Navigate to http://localhost:5173/
 
 To use this component in your project, import it and add it to your component tree.
 
-**Besic Example**
+**Basic Example**
 
-````tsx
-import React from 'react';
-import EmailChipInput from './EmailChipInput';
+```tsx
+import EmailComponentExample from "./example/EmailComponentExample";
+import "./styles/App.scss";
 
-const App = () => {
-  const handleEmailsChange = (emails) => {
-    console.log("Updated emails:", emails);
-  };
-
-  return (
-    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
-      <h1>Email Input Component</h1>
-      <EmailChipInput onEmailsChange={handleEmailsChange} />
-    </div>
-  );
+export type EmailObject = {
+	id: number;
+	email: string;
 };
 
-export default App```
-````
+export default function App() {
+	return (
+		<div className="flex h-screen w-full justify-between relative flex-col">
+			<div className="flex flex-col px-4 py-6 items-center w-full">
+				<header className="flex flex-col items-center gap-9">
+					<h1 className="leading text-2xl font-bold text-blue-800">
+						Email Input Example
+					</h1>
+				</header>
+				<EmailComponentExample />
+			</div>
+		</div>
+	);
+}
+```
+
+## 📜 Props, Design and structure
+
+- `EmailObject`: An object holding a unique id and an email address. In this example that isn't neccesarily needed, we could just use the email string, but if it was used in a larger app having an id to point to email address can be cleaner.
+
+For styling I used a combination of Tailwind.css and SCSS. Most of the app uses Tailwind for layout, but I added a few custom classes for components requiring a bit more complex or detailed styling, for maintainability. If I were to expand this app I would make these components more reusable, and give each one it's own stylesheet in an individual component folder.
+
+\*\*\*\*For example
+
+```
+src
+  -components
+    --Button
+      ---Button.tsx
+      ---Button.scss
+    --EmailInput
+      ---EmailInput.tsx
+      ---EmailInput.scss
+```
+
+For the SCSS I used variables and mixins, which is best for a single source of truth in a bigger app.
