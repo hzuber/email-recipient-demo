@@ -17,7 +17,52 @@ A React-based email input component for managing multiple email entries in a sin
 ## 🚀 Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/your-username/email-input-component.git
    cd email-input-component
    ```
+
+2. **Install dependencies**:
+
+```bash
+npm install
+```
+
+3. **Start the development server**:
+
+```bash
+npm run dev
+```
+
+4. **To see as a standalone page**
+
+Navigate to http://localhost:5173/
+
+---
+
+## 📚 Usage
+
+To use this component in your project, import it and add it to your component tree.
+
+**Besic Example**
+
+````tsx
+import React from 'react';
+import EmailChipInput from './EmailChipInput';
+
+const App = () => {
+  const handleEmailsChange = (emails) => {
+    console.log("Updated emails:", emails);
+  };
+
+  return (
+    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+      <h1>Email Input Component</h1>
+      <EmailChipInput onEmailsChange={handleEmailsChange} />
+    </div>
+  );
+};
+
+export default App```
+````

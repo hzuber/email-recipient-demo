@@ -27,7 +27,7 @@ const EmailInput = ({
 	const chipRefs = useRef<Map<string, number>>(new Map());
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === "Enter" || e.key === " ") {
+		if (e.key === "Enter" || e.key === " " || e.key === ",") {
 			e.preventDefault();
 			const response = handleAddEmail(inputValue);
 			response && setInputValue("");
@@ -49,11 +49,13 @@ const EmailInput = ({
 		updateHiddenCount();
 	};
 
+	// handle what change? input?
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
 		removeErrors();
 	};
 
+	// which container?
 	const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (e.target === containerRef.current) {
 			inputRef.current?.focus();
@@ -62,7 +64,8 @@ const EmailInput = ({
 
 	const updateHiddenCount = useCallback(() => {
 		if (!containerRef.current || !inputRef.current) return;
-		const minInputWidth = 250;
+		// Min width isn't working?
+		const minInputWidth = 160;
 		const containerWidth = containerRef.current.clientWidth;
 		const inputWidth = minInputWidth;
 		let totalWidth = inputWidth;
@@ -86,6 +89,8 @@ const EmailInput = ({
 		return () => window.removeEventListener("resize", updateHiddenCount);
 	}, [currentEmails, updateHiddenCount, inputValue]);
 
+	// ask chatgpt about performance of slicing and mapping
+
 	return (
 		<div
 			className="w-full text-input bg-white cursor-text"
@@ -95,7 +100,7 @@ const EmailInput = ({
 			{currentEmails.slice(0, currentEmails.length - hiddenCount).map((obj) => (
 				<div
 					key={obj.id}
-					className="email-chip cursor-auto"
+					className="email-chip cursor-default"
 					ref={(el) => {
 						if (el) {
 							chipRefs.current.set(obj.id.toString(), el.offsetWidth);
@@ -127,7 +132,7 @@ const EmailInput = ({
 				value={inputValue}
 				onChange={(e) => handleChange(e)}
 				onKeyDown={handleKeyDown}
-				className="p-1 outline-none flex-grow min-w-32 "
+				className="p-1 outline-none flex-grow min-w-40"
 			/>
 		</div>
 	);
