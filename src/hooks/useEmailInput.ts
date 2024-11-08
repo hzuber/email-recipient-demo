@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { EmailObject } from "../example/EmailComponentExample";
 import { useResizeUpdate } from "./useResizeUpdate";
 

@@ -39,6 +39,14 @@ const EmailInput = ({
 		setShowModal,
 	});
 
+	const handleChipClick = (emailObj: EmailObject) => {
+		setInputValue(emailObj.email);
+		setEmails(currentEmails.filter((obj) => obj.id !== emailObj.id));
+		chipRefs.current.delete(emailObj.id.toString());
+		removeErrors();
+		inputRef.current?.focus();
+	};
+
 	return (
 		<div
 			className="w-full text-input max-w-3xl min-w-72"
@@ -50,6 +58,7 @@ const EmailInput = ({
 					key={obj.id}
 					email={obj.email}
 					onDelete={() => deleteEmail(obj.id)}
+					onClick={() => handleChipClick(obj)}
 					ref={(el: HTMLDivElement | null) => {
 						if (el) {
 							chipRefs.current.set(obj.id.toString(), el.offsetWidth);
