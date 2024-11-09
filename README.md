@@ -6,7 +6,7 @@ A React-based email input component for managing multiple email entries in a sin
 
 ## ✨ Features
 
-- **Add Emails**: Press `Enter` or `Space` to add an email.
+- **Add Emails**: Press `Enter`, `,` or `Space` to add an email.
 - **Delete Emails**: Remove any email by clicking the "x" icon on each chip.
 - **Edit Last Email**: Press `Backspace` on an empty input to move the last chip back for editing.
 - **Automatic Focus**: Clicking empty space in the container focuses the input.
