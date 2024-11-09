@@ -76,9 +76,9 @@ export default function App() {
 
 #### Structure
 The structure of the app is fairly straightforward. 
-*In the src folder, the `main.tsx` file holds the createRoot component, while the `App.tsx` file contains the structure of the app itself.
-*The example folder holds the demo email component.
-*The rest of the folders follow standard naming conventions
+* In the src folder, the `main.tsx` file holds the createRoot component, while the `App.tsx` file contains the structure of the app itself.
+* The example folder holds the demo email component.
+* The rest of the folders follow standard naming conventions
 
 ```
 src
